@@ -1,3 +1,17 @@
+html,
+body {
+    margin: 10;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    display: block;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: rgb(35, 35, 69);
+}
+
+
 #descriptif {
 
 text-align: justify;
@@ -8,31 +22,8 @@ margin: 40px;
 #title {
 
     margin: 40px;
-}
+} 
 
-
-
-#image-space {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 500px;
-}
-
-
-
-html,
-body {
-    margin: 10;
-    padding: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background: #a4d210;
-}
 
 .glow-on-hover {
     width: 220px;
@@ -93,3 +84,4 @@ body {
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
+

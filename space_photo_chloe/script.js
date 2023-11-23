@@ -9,17 +9,10 @@ fetch(`${url}?api_key=${api_key}`)
  .then(data => {
     console.log('Data:', data);
 
-    //Pour display l'image
-    const img = new Image()
-    const addImage = document.getElementById('photo')
-    img.src = data.url // ici, le .src correspond à l'url de l'image donc on va chercher dans l'objet 'data' .url
-    img.id = "image-space"
+    spaceURL = data.url
 
-
-    document.body.appendChild(img) //dessine l'image sur la page html
-    document.body.insertBefore(img, document.getElementById('descriptif'))
-
-
+    document.getElementById('image-space').src = spaceURL
+   
     //Pour display la description
     const description = data.explanation //ici, on va chercher le description dans l'objet 'data'
     const addDescriptif = document.getElementById('descriptif')//on return la valeur 'addDescriptif' là où il y a l'id 'descriptif'
