@@ -43,25 +43,11 @@ fetch(`${url}?api_key=${api_key}`)
     const addDate = document.getElementById('date')
     addDate.innerHTML= publication
 
-    function popupImage(imageUrl) {
-      // Créer une fenêtre pop-up
-      var popup = window.open('', 'Image Pop-up', 'width=600,height=400');
-   
-      // Insérer le code HTML dans la fenêtre pop-up pour afficher l'image
-      popup.document.write('<html><head><title>Image Pop-up</title></head><body style="margin:0;text-align:center;background: #111">');
-      popup.document.write('<img src="' + imageUrl + '" alt="Image" style="width:100%; height:auto; display:block;">');
-      popup.document.write('</body></html>');
-   
-      // Fermer le document de la fenêtre pop-up pour éviter tout problème potentiel
-      popup.document.close();
-    }
-   
-   popupImage(image-space);
-   
- })
- .catch(error => {
-  console.error('Error:', error);
- });
+    
+   })
+   .catch(error => {
+      console.error('Error:', error);
+   });
 
  fetch(`https://api.nasa.gov/planetary/apod?date=${nextDay}&api_key=${api_key}`)
  .then(response => {
@@ -79,5 +65,16 @@ fetch(`${url}?api_key=${api_key}`)
  .catch(error => {
   console.error('Error:', error);
  });
-
-
+ 
+ function popupImage(imageUrl) {
+ 
+    var popup = window.open('', 'Image Pop-up', 'width=600,height=400');
+ 
+    popup.document.write('<html><head><title>Image Pop-up</title></head><body style="margin:0;text-align:center;background: #111">');
+    popup.document.write('<img src="' + imageUrl + '" alt="Image" style="width:100%; height:auto; display:block;">');
+    popup.document.write('</body></html>');
+    popup.document.close();
+ }
+    
+    popupImage(image-space);
+ 
