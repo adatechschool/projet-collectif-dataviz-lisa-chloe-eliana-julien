@@ -1,5 +1,22 @@
 const url = "https://api.nasa.gov/planetary/apod";
 const api_key = "nyAfB7JXz5pufTPcJBHue2c8DBILeTaHZviBTzEU";
+let nextDay = dateFormat(getNextDay())
+
+function getNextDay() {
+
+   let today = new Date()
+   let nextDay = new Date()
+   nextDay.setDate(today.getDate() - 2)
+   return nextDay
+}
+
+function dateFormat(date) {
+   let year = date.getFullYear()
+   let month = ("0" + (date.getMonth() + 1)).slice(-2)
+   let day = ("0" + date.getDate()).slice(-2)
+   return `${year}-${month}-${day}`
+}
+
 
 fetch(`${url}?api_key=${api_key}`)
  .then(response => {
@@ -29,4 +46,22 @@ fetch(`${url}?api_key=${api_key}`)
  .catch(error => {
   console.error('Error:', error);
  });
+
+ fetch(`https://api.nasa.gov/planetary/apod?date=${nextDay}&api_key=${api_key}`)
+ .then(response => {
+  console.log('Response:', response);
+  return response.json();
+ })
+ .then(data => {
+    console.log('Data:', data);
+    spaceURL2 = data.url
+
+    document.getElementById('image-space2').src = spaceURL2
+
+
+ })
+ .catch(error => {
+  console.error('Error:', error);
+ });
+
 
