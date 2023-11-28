@@ -11,8 +11,24 @@
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Style pour le lien */
+        .popup-link {
+          cursor: pointer;
+        }
+        /* Style pour l'image sur la page */
+        #image-space {
+          max-width: 100%;
+          max-height: 100%;
+        }
+    </style>
 
 
+</head>
+<body>
+    
+    <h1 id="title"></h1>
+    <a href="https://apod.nasa.gov/apod/image/2311/EagleRay_Chander_960.jpg" class="popup-link" onclick="popupImage(this.href); return false;"><img id="image-space" src="https://apod.nasa.gov/apod/image/2311/EagleRay_Chander_960.jpg" alt="Image"></a>
+    <style>
         img {
             transition: transform 0.3s;
         }
@@ -21,21 +37,15 @@
             transform: scale(1.02);
         }
     </style>
-
-</head>
-<body>
-
-
-
-    <div id="container"> 
+  
+   <div id="container"> 
         <h1 id="title">item-1</h1>
         <p id="date"><item-2></item-2></p>
         <p id="descriptif">item-3</p> 
         <a href="#target"><img id="image-space" src="" alt="">item-4</a>
     </div>
-   
 
-
+    <a href="#target"><img id="image-space2" src="" alt=""></a>
 
     <script src="script.js"></script>
 </body>
