@@ -71,7 +71,7 @@ fetch(`${url}?api_key=${api_key}`)
     var popup = window.open('', 'Image Pop-up', 'width=600,height=400');
  
     popup.document.write('<html><head><title>Image Pop-up</title></head><body style="margin:0;text-align:center;background: #111">');
-    popup.document.write('<img src="' + imageUrl + '" alt="Image" style="width:100%; height:auto; display:block;">');
+    popup.document.write('<img src="' + spaceURL + '" alt="Image" style="width:100%; height:auto; display:block;">');
     popup.document.write('</body></html>');
     popup.document.close();
  }
