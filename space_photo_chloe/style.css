@@ -11,9 +11,7 @@ body {
     background: rgb(0, 0, 0);
 }
 
-a{
-   
- }
+
 
 #descriptif  {
     
@@ -29,6 +27,12 @@ a{
 
     
     
+}
+
+a{
+    max-width: 200px; 
+    height: 200px;
+    margin: 60px;
 }
 
 #title {
