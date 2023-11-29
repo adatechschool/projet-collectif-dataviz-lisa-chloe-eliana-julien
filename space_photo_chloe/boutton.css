@@ -202,16 +202,16 @@ body::after {
 }
 
 h1 {
-    Font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Star Wars', sans-serif;
     position: fixed;
-    top: 10px;
+    top: 50px;
     font-size: 100px;
     margin-top: 0;
     padding: 10px;
     text-shadow:#ffae00 2.5px 2.5px 0,
 #ff00c0 5px 5px 0,
 #aa0306 7.5px 7.5px 0,
-#7c0003 10px 10px 10px;color:#ffe69a;
+#333 10.5px 10.5px 10px;color:#FFDB57;
 }
 
 h2 {
@@ -222,7 +222,7 @@ h2 {
     font-size: 25px;
     margin-top: 0;
     padding: 10px;
-    text-shadow:0 0 2px #D000FE,0 0 30px #D000FE,0px 0px 5px #D000FE, 0 0 150px #D000FE;color:#D000FE;
+    text-shadow:0 0 3px #D000FE, 0 0 10px #D000FE, 0 0 20px #D000FE;color:#D000FE;
 }
 
 h3 {
