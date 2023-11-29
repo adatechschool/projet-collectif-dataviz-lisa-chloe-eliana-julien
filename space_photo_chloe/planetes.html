@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Day's Space</title>
-    <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
 
 
 </head>
 <body>
     
-    <h1 id="title"></h1>
-    <a href="#target"><img id="image-space" src="" alt=""></a>
     <style>
         img {
             transition: transform 0.3s;
@@ -20,14 +20,25 @@
 
         img:hover, img:active {
             transform: scale(1.02);
-        }
-    </style>
+            }
+        </style>
 
+    
+   <div id="container"> 
+         <h1 id="title"></h1>    
+        <p id="date">item-2</p>
+        <p id="descriptif">item-3</p> 
+        <a href="" class="popup-link" onclick="popupImage(this.href); return false;"><img id="image-space" src="" alt="Image"></a>
+    </div>
 
-    <p id="descriptif"></p>
-    <p id="date"></p>
+    
+    <div class="gallery">
+        <a href="#target"><img id="image-space2" src="" alt=""></a>
+        <a href="#target"><img id="image-space3" src="" alt=""></a>
+        <a href="#target"><img id="image-space4" src="" alt=""></a>
+        <a href="#target"><img id="image-space5" src="" alt=""></a>
+    </div>
 
-    <a href="#target"><img id="image-space2" src="" alt=""></a>
 
     <script src="script.js"></script>
 </body>
