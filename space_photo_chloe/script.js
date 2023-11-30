@@ -76,19 +76,68 @@ for(let i = 1 ; i < 5 ; i++) {
    .catch(error => {
    });
 }
-    
 
- //Pop-upde l'image 1
- function popupImage() {
- 
-    var popup = window.open('', 'Image Pop-up', 'width=600,height=400');
- 
-    popup.document.write('<html><head><title>Image Pop-up</title></head><body style="margin:0;text-align:center;background: #111">');
-    popup.document.write('<img src="' + spaceURL + '" alt="Image" style="width:100%; height:auto; display:block;">');
-    popup.document.write('</body></html>');
-    popup.document.close();
- }
-    
-    popupImage();
- 
+//Pop-upde l'image 1
+function popupImage1() {
 
+   var popup = window.open('', 'Image Pop-up', 'width=600,height=400');
+
+   popup.document.write('<html><head><title>Image Pop-up</title></head><body style="margin:0;text-align:center;background: #111">');
+   popup.document.write('<img src="' + spaceURL + '" alt="Image" style="width:100%; height:auto; display:block;">');
+   popup.document.write('</body></html>');
+   popup.document.close();
+}
+   
+   popupImage1();
+
+//Pop-upde l'image 2
+function popupImage2() {
+
+   var popup = window.open('', 'Image Pop-up', 'width=600,height=400');
+
+   popup.document.write('<html><head><title>Image Pop-up</title></head><body style="margin:0;text-align:center;background: #111">');
+   popup.document.write('<img src="' + images[0] + '" alt="Image" style="width:100%; height:auto; display:block;">');
+   popup.document.write('</body></html>');
+   popup.document.close();
+}
+   
+   popupImage2();
+
+//Pop-upde l'image 3
+function popupImage3() {
+
+   var popup = window.open('', 'Image Pop-up', 'width=600,height=400');
+
+   popup.document.write('<html><head><title>Image Pop-up</title></head><body style="margin:0;text-align:center;background: #111">');
+   popup.document.write('<img src="' + images[1] + '" alt="Image" style="width:100%; height:auto; display:block;">');
+   popup.document.write('</body></html>');
+   popup.document.close();
+}
+   
+   popupImage3();
+
+//Pop-upde l'image 4
+function popupImage4() {
+
+   var popup = window.open('', 'Image Pop-up', 'width=600,height=400');
+
+   popup.document.write('<html><head><title>Image Pop-up</title></head><body style="margin:0;text-align:center;background: #111">');
+   popup.document.write('<img src="' + images[2] + '" alt="Image" style="width:100%; height:auto; display:block;">');
+   popup.document.write('</body></html>');
+   popup.document.close();
+}
+   
+   popupImage4();
+
+//Pop-upde l'image 5
+function popupImage5() {
+
+   var popup = window.open('', 'Image Pop-up', 'width=600,height=400');
+
+   popup.document.write('<html><head><title>Image Pop-up</title></head><body style="margin:0;text-align:center;background: #111">');
+   popup.document.write('<img src="' + images[3] + '" alt="Image" style="width:100%; height:auto; display:block;">');
+   popup.document.write('</body></html>');
+   popup.document.close();
+}
+   
+   popupImage5();
