@@ -17,6 +17,7 @@ body {
 #descriptif  {
     
     font-family: 'Space Grotesk', sans-serif;
+    margin-top: -10px;
     font-size: 20px;
     text-align: left;
     text-justify: distribute;
@@ -25,8 +26,6 @@ body {
     color : rgb(180, 214, 224);
     width: 700px;
   line-height: 40px;
-
-    
     
 }
 
@@ -47,17 +46,20 @@ body {
 } 
 #date {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 50px;
-    width: 150px;
-   height: 150px;
+    font-size: 100px;
+    text-align: right;
+ 
     color: rgb(180, 214, 224);
-
+margin-right: 50px;
+margin-bottom: 20px;
+margin: -10px;
+padding-right: 50px;
 }
 
 .date{
-    margin-left: 50%;
+
 justify-content: right;
-margin: 0%;
+
    
   
 }
@@ -95,6 +97,7 @@ margin: 0%;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin: 50px;
 
  }
 
@@ -148,4 +151,15 @@ p {
  color: rgb(180, 214, 224);
  text-align: center;
  font-size: 50px;
+}
+
+.figure{
+    position: relative;
+justify-self: center;
+margin-left: 500px;
+margin-right: 450px;
+resize: both;
+
+
+
 }
