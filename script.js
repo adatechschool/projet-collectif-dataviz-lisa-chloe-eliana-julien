@@ -2,48 +2,7 @@ const api_key = "nyAfB7JXz5pufTPcJBHue2c8DBILeTaHZviBTzEU";
 let images = []
 let date = new Date()
 
-
-
-//recup de la data
-fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}`)
- .then(response => {
-   if(response.ok) {
-      console.log("Clé Valide")
-   } else {
-      console.log("Clé non valide")
-   }
-
-
-    console.log('Response:', response);
-    return response.json();
- })
- .then(data => {
-    console.log('Data:', data);
-
-    spaceURL = data.url
-
-    document.getElementById('image-space').src = spaceURL
-   
-    //Pour display la description
-    const description = data.explanation //ici, on va chercher le description dans l'objet 'data'
-    const addDescriptif = document.getElementById('descriptif')//on return la valeur 'addDescriptif' là où il y a l'id 'descriptif'
-    addDescriptif.innerHTML = description // on dit que 'description' représente 'addDescriptif' et on va avec innerHTLM, l'écrire sur la page html
-   
-    const titre = data.title
-    const addTitre = document.getElementById('title')
-    addTitre.innerHTML = titre
-
-    const publication = data.date
-    const addDate = document.getElementById('date')
-    addDate.innerHTML= publication
-
- })
-   .catch(error => {
-      console.error('Error:', error);
-   });
-
-
-for(let i = 1 ; i < 5 ; i++) {
+for(let i = 0 ; i < 5 ; i++) {
       
    date.setDate(date.getDate() - i) 
 
@@ -51,31 +10,128 @@ for(let i = 1 ; i < 5 ; i++) {
    let month = ("0" + (date.getMonth() + 1)).slice(-2)
    let day = ("0" + date.getDate()).slice(-2)
 
-   fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}&date=${year}-${month}-${day}`)
-   .then(response => {
-      console.log('Response:', response);
-      return response.json();
-   })
-   .then(data => {
-      console.log('Data:', data);
-      
-      images.push(data.url)
-      let spaceURL2 = images[0]
-      document.getElementById('image-space2').src = spaceURL2
-      
-      let spaceURL3 = images[1]
-      document.getElementById('image-space3').src = spaceURL3
+   async function getImages() {
+      try {
 
-      let spaceURL4 = images[2]
-      document.getElementById('image-space4').src = spaceURL4
+         let response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}&date=${year}-${month}-${day}`)
+         
+         if(!response.ok) {
+           throw new Error('Cannot get image');
+         }
 
-      let spaceURL5 = images[3]
-      document.getElementById('image-space5').src = spaceURL5
-   })
+         const images = await response.json()
+         const imageElement = document.createElement('img')
+         imageElement.src = images.url
+         document.body.appendChild(imageElement)
+      } catch (error) {
+         console.error('Failed to load images : ', error)
+      }
+
    
-   .catch(error => {
-   });
+   }
+   getImages()
 }
+
+//recup de la data
+// fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}`)
+//  .then(response => {
+//    if(response.ok) {
+//       console.log("Clé Valide")
+//    } else {
+//       console.log("Clé non valide")
+//    }
+
+
+//     console.log('Response:', response);
+//     return response.json();
+//  })
+//  .then(data => {
+//     console.log('Data:', data);
+
+//     spaceURL = data.url
+
+//     document.getElementById('image-space').src = spaceURL
+   
+//     //Pour display la description
+//     const description = data.explanation //ici, on va chercher le description dans l'objet 'data'
+//     const addDescriptif = document.getElementById('descriptif')//on return la valeur 'addDescriptif' là où il y a l'id 'descriptif'
+//     addDescriptif.innerHTML = description // on dit que 'description' représente 'addDescriptif' et on va avec innerHTLM, l'écrire sur la page html
+   
+//     const titre = data.title
+//     const addTitre = document.getElementById('title')
+//     addTitre.innerHTML = titre
+
+//     const publication = data.date
+//     const addDate = document.getElementById('date')
+//     addDate.innerHTML= publication
+
+//  })
+//    .catch(error => {
+//       console.error('Error:', error);
+//    });
+
+
+// for(let i = 0 ; i < 5 ; i++) {
+      
+//    date.setDate(date.getDate() - i) 
+
+//    let year = date.getFullYear()
+//    let month = ("0" + (date.getMonth() + 1)).slice(-2)
+//    let day = ("0" + date.getDate()).slice(-2)
+
+// fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}&date=${year}-${month}-${day}`)
+//    .then(response => {
+//       console.log('Response:', response);
+//       return response.json();
+//    })
+//    .then(data => {
+//       console.log('Data:', data);
+      
+//       images.push(data.url)
+
+//       // images.map(imageUrl => {
+//       //    const gallery = document.getElementsByClassName('gallery')
+//       //    const newImages = document.createElement('img')
+
+//       //    newImages.src = imageUrl
+
+//       //    document.body.appendChild(newImages)
+
+//       //    //afficher les images avec boucle qui remplace à chaque itération le lien et donc innerHTML
+//       // })
+//       //    const newImages = document.createElement('img')
+//       //    const spaceURL2 = images[0]
+//       //    newImages.src = spaceURL2
+
+//       //    document.body.appendChild(newImages)
+   
+      
+//       // console.log(images)
+
+
+
+
+//       let spaceURL2 = images[0]
+//       document.getElementById('image-space2').src = spaceURL2
+      
+//       let spaceURL3 = images[1]
+//       document.getElementById('image-space3').src = spaceURL3
+
+//       let spaceURL4 = images[2]
+//       document.getElementById('image-space4').src = spaceURL4
+
+//       let spaceURL5 = images[3]
+//       document.getElementById('image-space5').src = spaceURL5
+//    })
+   
+//    .catch(error => {
+//    });
+//    console.log(i)
+// }
+
+// const img = document.createElement("img");
+// img.src = "https://picsum.photos/200/301";
+// document.body.appendChild(img);
 
 //Pop-upde l'image 1
 function popupImage1() {
@@ -140,4 +196,4 @@ function popupImage5() {
    popup.document.close();
 }
    
-   popupImage5();
+   // popupImage5();
