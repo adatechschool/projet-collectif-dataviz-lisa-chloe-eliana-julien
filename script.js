@@ -1,6 +1,8 @@
 const api_key = "nyAfB7JXz5pufTPcJBHue2c8DBILeTaHZviBTzEU";
-let images = []
+let fetchObjects = []
 let date = new Date()
+
+let promises = []
 
 for(let i = 0 ; i < 5 ; i++) {
       
@@ -10,28 +12,63 @@ for(let i = 0 ; i < 5 ; i++) {
    let month = ("0" + (date.getMonth() + 1)).slice(-2)
    let day = ("0" + date.getDate()).slice(-2)
 
+
    async function getImages() {
-      try {
-
-         let response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}&date=${year}-${month}-${day}`)
-         
-         if(!response.ok) {
-           throw new Error('Cannot get image');
+         try {
+            let response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}&date=${year}-${month}-${day}`)
+            
+            if(!response.ok) {
+               throw new Error('Cannot get images');
+            }
+            
+            const images = await response.json()
+            fetchObjects.push(images)
+            
+            // console.log(images)
+            const imageElement = document.createElement('img')
+            imageElement.src = images.url
+            document.body.appendChild(imageElement)
+         } catch (error) {
+            console.error('Failed to load images : ', error)
          }
+         
+      } 
+      promises.push(getImages());
 
-         const images = await response.json()
-         const imageElement = document.createElement('img')
-         imageElement.src = images.url
-         document.body.appendChild(imageElement)
-      } catch (error) {
-         console.error('Failed to load images : ', error)
-      }
-
-   
    }
-   getImages()
-}
+   
 
+Promise.all(promises).then((resolve) => {
+  console.log(fetchObjects)
+
+  const imageSpace = document.getElementById('image-space')
+  imageSpace.src = fetchObjects[0].url
+
+   const titleSpace = document.getElementById('title')
+
+   titleSpace.innerHTML = fetchObjects[0].title
+
+   const descriptif = document.getElementById('descriptif')
+   descriptif.innerHTML = fetchObjects[0].explanation 
+
+   const date = document.getElementById('date')
+   date.innerHTML = fetchObjects[0].date
+
+
+
+
+
+
+});
+
+ 
+
+
+
+//on veut prendre la class gallery, et affiche à l'aide d'une boucle for où une élément correspond à un lien d'une image.
+
+// ArrayImages = [image1, images2]
+// ArrayImages[0].url
 //recup de la data
 // fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}`)
 //  .then(response => {
