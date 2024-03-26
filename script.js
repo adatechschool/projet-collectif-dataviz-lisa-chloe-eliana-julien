@@ -1,25 +1,51 @@
 const api_key = "nyAfB7JXz5pufTPcJBHue2c8DBILeTaHZviBTzEU";
 let fetchObjects = []
-let date = new Date()
-
+ let date = new Date()
 let promises = []
 
-for(let i = 0 ; i < 5 ; i++) {
+
+
+// console.log(dateDuJour.year + "-" + dateDuJour.month +  "-" + dateDuJour.day);
+// for(let i = 0 ; i < 5 ; i++) {
+//    function getDateobject () {
+//       const date = new Date(); // Appel de la fonction existante pour obtenir la date
+//       const dateObject = {
+//           year: date.getFullYear(),
+//           month: ("0" + (date.getMonth() + 1)).slice(-2), // Les mois commencent à 0, donc on ajoute 1
+//           day: ("0" + date.getDate()).slice(-2),
+//          };
+   
+//          return dateObject;
+         
+         
+//       }
       
-   date.setDate(date.getDate() - i) 
+      
+
+      /*const dateDuJour = getDateobject();*/
+      
+      
+      // let dateDuJour = new Date();
+      // dateDuJour.setDate(dateDuJour.getDate() - i);
+      // let dateObject = getDateObject(dateDuJour);
+      // promises.push(getImages(dateObject));
+
+      // on a la date du jour grâce à l'objet dateObject qu'on appelle la fonction getDateobject.
 
    let year = date.getFullYear()
    let month = ("0" + (date.getMonth() + 1)).slice(-2)
-   let day = ("0" + date.getDate()).slice(-2)
-
-
-   async function getImages() {
+   let day = ("0" + date.getDate()).slice(-2) 
+ 
+ 
+ async function getImages() {
          try {
-            let response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}&date=${year}-${month}-${day}`)
+            let response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}&date=${dateDuJour.year}-${dateDuJour.month}-${dateDuJour.day}`)
             
             if(!response.ok) {
                throw new Error('Cannot get images');
             }
+
+            //Si la date du l'image fetch.date = à la date du jour            
             
             const images = await response.json()
             fetchObjects.push(images)
@@ -32,7 +58,6 @@ for(let i = 0 ; i < 5 ; i++) {
             console.error('Failed to load images : ', error)
          }
          
-      } 
       promises.push(getImages());
 
    }
@@ -55,17 +80,18 @@ Promise.all(promises).then((resolve) => {
    date.innerHTML = fetchObjects[0].date
 
 
+   //on veut prendre la class gallery, et affiche à l'aide d'une boucle for où une élément correspond à un lien d'une image.
 
+   const contenuGallery = document.getElementsByClassName('gallery').innerHTML = "<p>Salut<p/>"
 
 
 
 });
 
- 
+ console.log(date)
 
 
 
-//on veut prendre la class gallery, et affiche à l'aide d'une boucle for où une élément correspond à un lien d'une image.
 
 // ArrayImages = [image1, images2]
 // ArrayImages[0].url
