@@ -32,6 +32,27 @@ body {
     }
 }
 
+/* Roue de chargement */
+.loader {
+    width: 56px;
+    height: 56px;
+    margin: 40px auto;
+    border: 5px solid rgba(180, 214, 224, 0.2);
+    border-top-color: #1effff;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loader {
+        animation-duration: 3s;
+    }
+}
+
 #title {
     font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(2rem, 8vw, 120px);
