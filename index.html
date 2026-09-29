@@ -1,38 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet"> 
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="boutton.css">
     <title>The Daily Space</title>
     <link rel="icon" href="./DailySpace.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Style pour le lien */
+        .popup-link {
+          cursor: pointer;
+        }
+      
+       
+    </style>
+
+
 </head>
 <body>
     
-    <!-- <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'> -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
-<link href="https://fonts.cdnfonts.com/css/star-wars" rel="stylesheet">
-<style>
-    @import url('https://fonts.cdnfonts.com/css/star-wars');
-</style>
-
     
-    <h1 id="title">The Daily Space</h1>
+   
+    <style>
+        img {
+            transition: transform 0.3s;
+        }
 
-    <h2>Would you like to discover the photo of the day proposed by NASA <br>Just click on the button :</h2>
+        img:hover, img:active {
+            transform: scale(1.02);
+            }
+        </style>
 
-    <h3>Create by Lisa, Chloé, Eliana and Julien</h3>
+<div class="figure">
+    <img alt="The Daily Space logo" src="./DailySpace.png"
+      width="400"
+      height="341"  />
+    
+  </div>
 
-    <div id="container">
-        <div id="vertical-center">
-            <a href="planetes.html"><button class="glow-on-hover" type="button">VAS-Y, CLIQUE</button></a>
+  
+   <div class="titre">
+         <h1 id="title">un</h1>    
+    </div>
+
+
+    <div class="description">
+        <div id="descriptif">deux</div>
+        <a href="" class="popup-link" onclick="popupImage1(this.href); return false;"><img id="image-space" src="" alt="Image"></a></div>
+    
+
+    <div class="date">
+        <p id="date">quatre</p></div>
+
+ 
+        <p>Last four days of space</p>
+        <div class="gallery">
+            <figure class="gallery-item">
+                <a class="anchor2 popup-link" href="" onclick="popupImage2(this.href); return false;"><img id='image-space2' src="" alt="Image2"></a>
+                <figcaption>
+                    <span class="gallery-title" id="title-space2"></span>
+                    <span class="gallery-date" id="date-space2"></span>
+                </figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <a class="anchor2 popup-link" href="" onclick="popupImage3(this.href); return false;"><img id='image-space3' src="" alt="Image3"></a>
+                <figcaption>
+                    <span class="gallery-title" id="title-space3"></span>
+                    <span class="gallery-date" id="date-space3"></span>
+                </figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <a class="anchor2 popup-link" href="" onclick="popupImage4(this.href); return false;"><img id='image-space4' src="" alt="Image4"></a>
+                <figcaption>
+                    <span class="gallery-title" id="title-space4"></span>
+                    <span class="gallery-date" id="date-space4"></span>
+                </figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <a class="anchor2 popup-link" href="" onclick="popupImage5(this.href); return false;"><img id='image-space5' src="" alt="Image5"></a>
+                <figcaption>
+                    <span class="gallery-title" id="title-space5"></span>
+                    <span class="gallery-date" id="date-space5"></span>
+                </figcaption>
+            </figure>
         </div>
-    </div>  
 
+
+    <script src="script.js"></script>
 </body>
 </html>
-
-
-
