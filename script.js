@@ -1,6 +1,5 @@
 const api_key = "nyAfB7JXz5pufTPcJBHue2c8DBILeTaHZviBTzEU";
 let images = []
-let date = new Date()
 
 
 
@@ -27,7 +26,25 @@ fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}`)
     //Pour display la description
     const description = data.explanation //ici, on va chercher le description dans l'objet 'data'
     const addDescriptif = document.getElementById('descriptif')//on return la valeur 'addDescriptif' là où il y a l'id 'descriptif'
-    addDescriptif.innerHTML = description // on dit que 'description' représente 'addDescriptif' et on va avec innerHTLM, l'écrire sur la page html
+    //on coupe le texte en phrases puis on les regroupe par paquets d'environ 300 caractères pour faire des paragraphes
+    const phrases = description.split(/(?<=[.!?])\s+(?=[A-Z])/)
+    const paragraphes = []
+    let paragraphe = ''
+    phrases.forEach(phrase => {
+       if (paragraphe && paragraphe.length + phrase.length > 300) {
+          paragraphes.push(paragraphe)
+          paragraphe = ''
+       }
+       paragraphe += (paragraphe ? ' ' : '') + phrase
+    })
+    if (paragraphe) paragraphes.push(paragraphe)
+
+    addDescriptif.innerHTML = '' // on vide le texte provisoire
+    paragraphes.forEach(texte => {
+       const p = document.createElement('p')
+       p.textContent = texte
+       addDescriptif.appendChild(p)
+    })
    
     const titre = data.title
     const addTitre = document.getElementById('title')
@@ -44,8 +61,10 @@ fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}`)
 
 
 for(let i = 1 ; i < 5 ; i++) {
-      
-   date.setDate(date.getDate() - i) 
+
+   //on repart d'aujourd'hui à chaque tour pour avoir J-1, J-2, J-3, J-4
+   let date = new Date()
+   date.setDate(date.getDate() - i)
 
    let year = date.getFullYear()
    let month = ("0" + (date.getMonth() + 1)).slice(-2)
@@ -58,19 +77,14 @@ for(let i = 1 ; i < 5 ; i++) {
    })
    .then(data => {
       console.log('Data:', data);
-      
-      images.push(data.url)
-      let spaceURL2 = images[0]
-      document.getElementById('image-space2').src = spaceURL2
-      
-      let spaceURL3 = images[1]
-      document.getElementById('image-space3').src = spaceURL3
 
-      let spaceURL4 = images[2]
-      document.getElementById('image-space4').src = spaceURL4
+      //on range l'image à sa place (i - 1) peu importe l'ordre d'arrivée des réponses
+      images[i - 1] = data.url
+      document.getElementById(`image-space${i + 1}`).src = data.url
 
-      let spaceURL5 = images[3]
-      document.getElementById('image-space5').src = spaceURL5
+      //titre et date sous chaque image
+      document.getElementById(`title-space${i + 1}`).textContent = data.title
+      document.getElementById(`date-space${i + 1}`).textContent = data.date
    })
    
    .catch(error => {

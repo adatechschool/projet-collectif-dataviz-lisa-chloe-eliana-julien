@@ -36,8 +36,7 @@
         </style>
 
 <div class="figure">
-    <img position:relative;
-    alt="html image example" src="./DailySpace.png" 
+    <img alt="The Daily Space logo" src="./DailySpace.png"
       width="400"
       height="341"  />
     
@@ -50,7 +49,7 @@
 
 
     <div class="description">
-        <p id="descriptif">deux</p>
+        <div id="descriptif">deux</div>
         <a href="" class="popup-link" onclick="popupImage1(this.href); return false;"><img id="image-space" src="" alt="Image"></a></div>
     
 
@@ -60,10 +59,34 @@
  
         <p>Last four days of space</p>
         <div class="gallery">
-            <a class="anchor2" href="" class="popup-link" onclick="popupImage2(this.href); return false;"><img id='image-space2' src="" alt="Image2"></a>
-            <a class="anchor2" href="" class="popup-link" onclick="popupImage3(this.href); return false;"><img id='image-space3' src="" alt="Image3"></a>
-            <a class="anchor2" href="" class="popup-link" onclick="popupImage4(this.href); return false;"><img id='image-space4' src="" alt="Image4"></a>
-            <a class="anchor2" href="" class="popup-link" onclick="popupImage5(this.href); return false;"><img id='image-space5' src="" alt="Image5"></a>
+            <figure class="gallery-item">
+                <a class="anchor2 popup-link" href="" onclick="popupImage2(this.href); return false;"><img id='image-space2' src="" alt="Image2"></a>
+                <figcaption>
+                    <span class="gallery-title" id="title-space2"></span>
+                    <span class="gallery-date" id="date-space2"></span>
+                </figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <a class="anchor2 popup-link" href="" onclick="popupImage3(this.href); return false;"><img id='image-space3' src="" alt="Image3"></a>
+                <figcaption>
+                    <span class="gallery-title" id="title-space3"></span>
+                    <span class="gallery-date" id="date-space3"></span>
+                </figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <a class="anchor2 popup-link" href="" onclick="popupImage4(this.href); return false;"><img id='image-space4' src="" alt="Image4"></a>
+                <figcaption>
+                    <span class="gallery-title" id="title-space4"></span>
+                    <span class="gallery-date" id="date-space4"></span>
+                </figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <a class="anchor2 popup-link" href="" onclick="popupImage5(this.href); return false;"><img id='image-space5' src="" alt="Image5"></a>
+                <figcaption>
+                    <span class="gallery-title" id="title-space5"></span>
+                    <span class="gallery-date" id="date-space5"></span>
+                </figcaption>
+            </figure>
         </div>
 
 

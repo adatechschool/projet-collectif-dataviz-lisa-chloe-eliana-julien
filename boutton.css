@@ -1,16 +1,26 @@
 html,
-
-
 body {
-    margin: 10;
+    margin: 0;
     padding: 0;
     width: 100%;
-    height: 100vh;
-    display: block;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center; 
+    min-height: 100vh;
     background: hsl(0, 0%, 0%);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 50px 16px 80px;
+    text-align: center;
+}
+
+#container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 html::before,
@@ -201,12 +211,21 @@ body::after {
     100% { background-position: 0 0; }
 }
 
+.glow-on-hover {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+/* Sur écran tactile il n'y a pas de hover : on garde l'effet au toucher */
+.glow-on-hover:active:before,
+.glow-on-hover:focus-visible:before {
+    opacity: 1;
+}
+
 h1 {
     font-family: 'Star Wars', sans-serif;
-    position: fixed;
-    top: 50px;
-    font-size: 100px;
-    margin-top: 0;
+    font-size: clamp(2.5rem, 10vw, 100px);
+    margin: 0;
     padding: 10px;
     text-shadow:#ffae00 2.5px 2.5px 0,
 #ff00c0 5px 5px 0,
@@ -217,10 +236,9 @@ h1 {
 h2 {
     Font-family: 'Space Grotesk', sans-serif;
     text-align: center;
-    position: fixed;
-    top: 225px;
-    font-size: 25px;
-    margin-top: 0;
+    font-size: clamp(1.1rem, 3vw, 25px);
+    max-width: 900px;
+    margin: 40px 0 0;
     padding: 10px;
     text-shadow:0 0 3px #D000FE, 0 0 10px #D000FE, 0 0 20px #D000FE;color:#D000FE;
 }
@@ -232,6 +250,8 @@ h3 {
     left: 1px;
     margin-bottom: 0;
     padding: 10px;
+    font-size: clamp(0.8rem, 2vw, 1.17em);
+    text-align: left;
     text-shadow:   -1px -1px 0 #fff,  
     1px -1px 0 #fff,
     -1px 1px 0 #fff,
@@ -239,3 +259,20 @@ h3 {
     1px 1px 10px #141414;color:#333;
 }
 
+/* Mobile */
+@media (max-width: 600px) {
+    body {
+        padding-top: 30px;
+    }
+
+    h1 {
+        text-shadow: #ffae00 1.5px 1.5px 0,
+            #ff00c0 3px 3px 0,
+            #aa0306 4.5px 4.5px 0,
+            #333 6px 6px 6px;
+    }
+
+    h2 br {
+        display: none;
+    }
+}
