@@ -119,6 +119,12 @@ body {
     object-fit: cover;
 }
 
+/* pas d'icône d'image cassée tant que l'API n'a pas répondu */
+#image-space[src=""],
+.gallery img[src=""] {
+    display: none;
+}
+
 .gallery-item figcaption {
     font-family: 'Space Grotesk', sans-serif;
     color: rgb(180, 214, 224);

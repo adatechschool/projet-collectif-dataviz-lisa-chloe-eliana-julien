@@ -57,6 +57,7 @@ fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}`)
  })
    .catch(error => {
       console.error('Error:', error);
+      document.getElementById('title').textContent = "Couldn't load today's photo, try again later."
    });
 
 
