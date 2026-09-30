@@ -1,6 +1,11 @@
 const api_key = "nyAfB7JXz5pufTPcJBHue2c8DBILeTaHZviBTzEU";
 let images = []
 
+//depuis le déménagement du site APOD vers science.nasa.gov, l'API renvoie parfois
+//le logo de la NASA et le titre "NASA Science" à la place de la vraie photo
+function reponseCassee(data) {
+   return !data.url || data.url.includes('nasa-logo') || data.title === 'NASA Science'
+}
 
 
 //recup de la data
@@ -21,6 +26,10 @@ fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}`, { signal: AbortS
  })
  .then(data => {
     console.log('Data:', data);
+
+    if (reponseCassee(data)) {
+       throw new Error('NASA_CASSEE')
+    }
 
     spaceURL = data.url
 
@@ -60,13 +69,27 @@ fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}`, { signal: AbortS
  })
    .catch(error => {
       console.error('Error:', error);
-      document.getElementById('title').textContent = "Couldn't load today's photo, try again later."
+      if (error.message === 'NASA_CASSEE') {
+         document.getElementById('title').textContent = "NASA's photo service is having problems right now, try again later."
+      } else {
+         document.getElementById('title').textContent = "Couldn't load today's photo, try again later."
+      }
    })
    .finally(() => {
       //on enlève la roue de chargement dans tous les cas (succès ou erreur)
       document.getElementById('loader').remove()
    });
 
+
+//si aucune des 4 images ne marche, on cache toute la section
+let echecsGalerie = 0
+function echecGalerie() {
+   echecsGalerie++
+   if (echecsGalerie === 4) {
+      document.getElementById('gallery-title').style.display = 'none'
+      document.querySelector('.gallery').style.display = 'none'
+   }
+}
 
 for(let i = 1 ; i < 5 ; i++) {
 
@@ -78,13 +101,20 @@ for(let i = 1 ; i < 5 ; i++) {
    let month = ("0" + (date.getMonth() + 1)).slice(-2)
    let day = ("0" + date.getDate()).slice(-2)
 
-   fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}&date=${year}-${month}-${day}`)
+   fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}&date=${year}-${month}-${day}`, { signal: AbortSignal.timeout(15000) })
    .then(response => {
       console.log('Response:', response);
+      if (!response.ok) {
+         throw new Error(`API error ${response.status}`)
+      }
       return response.json();
    })
    .then(data => {
       console.log('Data:', data);
+
+      if (reponseCassee(data)) {
+         throw new Error('NASA_CASSEE')
+      }
 
       //on range l'image à sa place (i - 1) peu importe l'ordre d'arrivée des réponses
       images[i - 1] = data.url
@@ -96,6 +126,10 @@ for(let i = 1 ; i < 5 ; i++) {
    })
    
    .catch(error => {
+      console.error('Error:', error);
+      //on cache la case vide pour ne pas laisser de trou dans la galerie
+      document.getElementById(`image-space${i + 1}`).closest('.gallery-item').style.display = 'none'
+      echecGalerie()
    });
 }
 
