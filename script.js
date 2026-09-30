@@ -4,12 +4,15 @@ let images = []
 
 
 //recup de la data
-fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}`)
+//si la NASA ne répond pas en 15 secondes, on abandonne et on affiche le message d'erreur
+fetch(`https://api.nasa.gov/planetary/apod?api_key=${api_key}`, { signal: AbortSignal.timeout(15000) })
  .then(response => {
    if(response.ok) {
       console.log("Clé Valide")
    } else {
       console.log("Clé non valide")
+      //l'API a répondu par une erreur (ex : 504 quand elle est en panne), on passe directement au catch
+      throw new Error(`API error ${response.status}`)
    }
 
 
